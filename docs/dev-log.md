@@ -235,6 +235,230 @@
 
 ---
 
+## v0.6 - Multimodal Integration
+
+**Ziel:** Machine verbindet Vision, Audio und Text zu einem kohärenten Verständnis
+
+**Funktionalität:**
+- Gleichzeitige Verarbeitung mehrerer Sensoren
+- Cross-Modal Learning (z.B. "Dieses Geräusch gehört zu diesem Bild")
+- Zeitliche Synchronisation von Events
+
+**Sub-Agenten Aufträge:**
+
+### Researcher
+- [ ] Recherchiere: Multimodale Embeddings (wie verbindet man verschiedene Datentypen?)
+- [ ] Recherchiere: Attention-Mechanismen (einfache Implementierung)
+- [ ] Recherchiere: Sensor Fusion Grundlagen
+
+### Coder 1
+- [ ] Implementiere `core/multimodal.py`: Kombiniert Vision + Audio + Text Embeddings
+- [ ] Implementiere `core/attention.py`: Einfacher Attention-Mechanismus
+- [ ] Implementiere Zeitliche Synchronisation (Timestamps alignen)
+
+### Coder 2
+- [ ] Implementiere `sensors/sync.py`: Synchronisierte Datenaufnahme
+- [ ] Implementiere `core/cross_modal.py`: Lernt Beziehungen zwischen Modalitäten
+- [ ] Erstelle Test-Szenarien (z.B. "Welches Geräusch passt zu welchem Bild?")
+
+### Code-Prüfer
+- [ ] Review: Multimodale Kombination
+- [ ] Review: Zeitliche Synchronisation
+- [ ] Test: Funktionieren Cross-Modal-Verbindungen?
+
+**Akzeptanzkriterien:**
+- [ ] Machine kann Bild + Audio gleichzeitig verarbeiten
+- [ ] Machine erkennt Zusammenhänge zwischen Modalitäten
+- [ ] Machine kann Fragen beantworten wie "Was hörst du, wenn du das siehst?"
+
+---
+
+## v0.7 - Kontextuelles Gedächtnis
+
+**Ziel:** Machine hat ein Langzeitgedächtnis und versteht Kontext
+
+**Funktionalität:**
+- Episodisches Gedächtnis (Ereignisse mit Zeitstempel)
+- Semantisches Gedächtnis (Fakten, Konzepte)
+- Kontext-Awareness (weiß, was vor 5 Minuten passiert ist)
+
+**Sub-Agenten Aufträge:**
+
+### Researcher
+- [ ] Recherchiere: Episodisches vs Semantisches Gedächtnis
+- [ ] Recherchiere: Memory Networks (einfache Implementierung)
+- [ ] Recherchiere: Wichtigkeit von forgetting (alte Erinnerungen verblassen)
+
+### Coder 1
+- [ ] Implementiere `core/episodic_memory.py`: Zeitliche Ereignis-Speicherung
+- [ ] Implementiere `core/semantic_memory.py`: Fakten-Wissensbasis
+- [ ] Implementiere Memory-Retrieval (relevante Erinnerungen abrufen)
+
+### Coder 2
+- [ ] Implementiere `core/context.py`: Kontext-Tracking über Zeit
+- [ ] Implementiere Forgetting-Mechanismus (alte, unwichtige Erinnerungen löschen)
+- [ ] Implementiere Memory-Compression (Speicher optimieren)
+
+### Code-Prüfer
+- [ ] Review: Gedächtnis-Strukturen
+- [ ] Review: Retrieval-Effizienz
+- [ ] Test: Bleibt Kontext über lange Zeit erhalten?
+
+**Akzeptanzkriterien:**
+- [ ] Machine erinnert sich an Ereignisse von vor Stunden
+- [ ] Machine nutzt Kontext für aktuelle Entscheidungen
+- [ ] Machine unterscheidet wichtige von unwichtigen Erinnerungen
+- [ ] Machine kann Fragen beantworten wie "Was habe ich gestern gelernt?"
+
+---
+
+## v0.8 - Kommunikation & Dialog
+
+**Ziel:** Machine kann natürlich kommunizieren und Fragen stellen
+
+**Funktionalität:**
+- Natürliche Sprachverarbeitung (einfaches NLP von Grund auf)
+- Dialog-Führung (Kontext über mehrere Sätze)
+- Fragen stellen (aktives Lernen)
+- Intent-Erkennung (was will der Mensch?)
+
+**Sub-Agenten Aufträge:**
+
+### Researcher
+- [ ] Recherchiere: Einfache NLP-Techniken (Tokenisierung, Embeddings)
+- [ ] Recherchiere: Dialog-State-Management
+- [ ] Recherchiere: Question Generation (wie stellt man gute Fragen?)
+
+### Coder 1
+- [ ] Implementiere `core/nlp.py`: Tokenisierung, Wort-Embeddings
+- [ ] Implementiere `core/dialog.py`: Dialog-State-Tracking
+- [ ] Implementiere `core/intent.py`: Intent-Klassifikation
+
+### Coder 2
+- [ ] Implementiere `interface/chat.py`: Natürliche Konversation
+- [ ] Implementiere `core/question_gen.py`: Stellt relevante Fragen
+- [ ] Implementiere Sprach-Ausgabe (Text-to-Speech, einfach)
+
+### Code-Prüfer
+- [ ] Review: NLP-Implementierung
+- [ ] Review: Dialog-Logik
+- [ ] Test: Sind Dialoge natürlich?
+
+**Akzeptanzkriterien:**
+- [ ] Machine führt natürliche Gespräche
+- [ ] Machine versteht Kontext über mehrere Sätze
+- [ ] Machine stellt relevante Fragen zum Lernen
+- [ ] Machine kann erklären, was sie denkt
+
+---
+
+## v0.9 - Autonomie & Proaktivität
+
+**Ziel:** Machine handelt selbstständig und ist proaktiv
+
+**Funktionalität:**
+- Ziel-Formulierung (eigene Ziele setzen)
+- Planung (Schritte zum Ziel)
+- Proaktives Verhalten (handelt ohne Aufforderung)
+- Selbst-Überwachung (erkennt eigene Fehler)
+
+**Sub-Agenten Aufträge:**
+
+### Researcher
+- [ ] Recherchiere: Goal-Formulation in KI
+- [ ] Recherchiere: Einfache Planungsalgorithmen (A*, State Space Search)
+- [ ] Recherchiere: Proaktives Verhalten bei Agenten
+
+### Coder 1
+- [ ] Implementiere `core/goals.py`: Ziel-Formulierung und -Verfolgung
+- [ ] Implementiere `core/planner.py`: Einfacher Planungs-Algorithmus
+- [ ] Implementiere `core/proactive.py`: Entscheidet, wann selbstständig zu handeln
+
+### Coder 2
+- [ ] Implementiere `core/self_monitor.py`: Überwacht eigene Performance
+- [ ] Implementiere `core/error_recovery.py`: Fehler erkennen und beheben
+- [ ] Implementiere Ziel-Priorisierung (welches Ziel ist wichtiger?)
+
+### Code-Prüfer
+- [ ] Review: Ziel-System
+- [ ] Review: Planungs-Logik
+- [ ] Test: Handelt Machine sinnvoll autonom?
+
+**Akzeptanzkriterien:**
+- [ ] Machine setzt sich eigene Ziele
+- [ ] Machine plant Schritte zum Erreichen von Zielen
+- [ ] Machine handelt proaktiv (z.B. "Ich habe bemerkt, dass...")
+- [ ] Machine erkennt und korrigiert eigene Fehler
+
+---
+
+## v1.0 - Alpha Release
+
+**Ziel:** Machine ist ein funktionsfähiger, lernender Agent
+
+**Funktionalität:**
+- Alle vorherigen Versionen integriert
+- Stabile API für Erweiterungen
+- Dokumentation für Nutzer
+- Sicherheits-Features (Sandbox, Limits)
+- Deployment-Ready (läuft 24/7 stabil)
+
+**Sub-Agenten Aufträge:**
+
+### Researcher
+- [ ] Recherchiere: Best Practices für KI-Sicherheit
+- [ ] Recherchiere: API-Design Patterns
+- [ ] Recherchiere: Deployment-Strategien für lokale KI
+
+### Coder 1
+- [ ] Implementiere `core/api.py`: Stabile API für alle Funktionen
+- [ ] Implementiere `core/security.py`: Sandbox, Limits, Zugriffskontrolle
+- [ ] Implementiere `core/scheduler.py`: 24/7 Betrieb, Ressourcen-Management
+
+### Coder 2
+- [ ] Erstelle `docs/user-guide.md`: Anleitung für Nutzer
+- [ ] Erstelle `docs/api-reference.md`: API-Dokumentation
+- [ ] Implementiere `tools/install.py`: Ein-Klick-Installation
+- [ ] Erstelle Beispiel-Skripte und Tutorials
+
+### Code-Prüfer
+- [ ] Review: Gesamte Codebase
+- [ ] Review: Sicherheits-Features
+- [ ] Review: API-Stabilität
+- [ ] End-to-End Tests
+- [ ] Performance-Tests
+- [ ] Sicherheits-Audit
+
+**Akzeptanzkriterien:**
+- [ ] Machine läuft stabil 24/7
+- [ ] Alle Features aus v0.1-v0.9 funktionieren zusammen
+- [ ] API ist stabil und dokumentiert
+- [ ] Sicherheits-Features aktiv und getestet
+- [ ] Nutzer-Dokumentation ist vollständig
+- [ ] Installation ist einfach
+- [ ] Machine kann real-world Aufgaben lösen
+
+---
+
+## Roadmap Zusammenfassung
+
+| Version | Fokus | Zeitrahmen | Status |
+|---------|-------|------------|--------|
+| v0.1 | Bootstrap - Supervised | 2 Wochen | 🔄 In Planung |
+| v0.2 | Unsupervised Clustering | 2 Wochen | ⏳ Wartet |
+| v0.3 | Reinforcement Learning | 2 Wochen | ⏳ Wartet |
+| v0.4 | Causal & Transfer | 1 Monat | ⏳ Wartet |
+| v0.5 | Meta-Learning & Code-Gen | 1 Monat | ⏳ Wartet |
+| v0.6 | Multimodal Integration | 3 Wochen | ⏳ Wartet |
+| v0.7 | Kontextuelles Gedächtnis | 3 Wochen | ⏳ Wartet |
+| v0.8 | Kommunikation & Dialog | 3 Wochen | ⏳ Wartet |
+| v0.9 | Autonomie & Proaktivität | 3 Wochen | ⏳ Wartet |
+| v1.0 | Alpha Release | 1 Monat | ⏳ Wartet |
+
+**Gesamte geschätzte Zeit:** ~6-7 Monate
+
+---
+
 ## Aktueller Stand
 
 **Version:** v0.1 - Bootstrap  
