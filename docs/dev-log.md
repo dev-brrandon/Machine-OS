@@ -20,6 +20,13 @@
 
 **Ziel:** Machine kann durch menschliches Labeln lernen
 
+**Infrastruktur:**
+- **Qdrant Research DB:** 187.77.67.80:32773
+  - Collection `code_examples`: Für Code-Beispiele
+  - Collection `research_findings`: Für Forschungsergebnisse
+  - Collection `test_results`: Für Test-Ergebnisse
+- **API Key:** In `tools/init_research_db.py` dokumentiert
+
 **Funktionalität:**
 - Rohdaten-Input (Pixel, Audio)
 - Einfache Vektor-Embeddings
@@ -32,11 +39,13 @@
 - [ ] Recherchiere: Wie funktioniert k-NN (k-nearest neighbors) Algorithmus?
 - [ ] Recherchiere: Einfache Methoden für Bild-zu-Vektor Konvertierung (ohne Deep Learning)
 - [ ] Recherchiere: Audio-Feature-Extraktion (Grundlagen)
+- [ ] **Speichere Ergebnisse in Qdrant** (`research_findings` collection)
 
 ### Coder 1
 - [ ] Implementiere `utils/math_ops.py`: Matrix-Multiplikation, Vektor-Operationen
 - [ ] Implementiere `core/memory.py`: Speicher für Vektoren + Labels (SQLite oder JSON)
 - [ ] Implementiere `core/pattern.py`: k-NN Algorithmus von Grund auf
+- [ ] **Nutze Qdrant** (`code_examples` collection) um ähnliche Implementierungen zu finden
 
 ### Coder 2
 - [ ] Implementiere `sensors/camera.py`: Webcam-Rohdaten-Capture (nur Pixel, keine Erkennung!)
@@ -47,6 +56,7 @@
 - [ ] Review: Alle mathematischen Operationen testen
 - [ ] Review: Speicher-Effizienz prüfen
 - [ ] Review: Sensor-Code auf Fehlerbehandlung prüfen
+- [ ] **Speichere Test-Ergebnisse in Qdrant** (`test_results` collection)
 
 **Akzeptanzkriterien:**
 - [ ] Machine kann zwischen 3 verschiedenen Objekten unterscheiden (nach Labeln)
