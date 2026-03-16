@@ -1,0 +1,39 @@
+/data/.openclaw/workspace/Machine-OS/agents/researcher_deep.py:417: SyntaxWarning: invalid escape sequence '\w'
+  text = re.sub(r'[^\w\s]', '', text)
+/data/.openclaw/workspace/Machine-OS/agents/researcher_deep.py:23: UserWarning: Api key is used with an insecure connection.
+  self.qdrant = QdrantClient(
+🔬 Deep Research Mode
+============================================================
+Start: 19:05:19
+Ende: 19:30:00 (28 Minuten)
+Sammle umfassend Code für alle Versionen...
+
+
+📦 v0.1: Erweiterte Grundlagen
+[1679s] ✅ Euklidische Distanz (v0.1)
+[1679s] ✅ Bild-Preprocessing (v0.1)
+[1679s] ✅ Audio-Preprocessing (v0.1)
+
+📦 v0.2-v0.5: Lernalgorithmen
+[1679s] ✅ DBSCAN Clustering (v0.2)
+[1679s] ✅ SARSA Reinforcement (v0.3)
+[1679s] ✅ Markov Chain (v0.4)
+
+📦 v0.6-v0.8: Fortgeschrittene Themen
+[1679s] ✅ Attention Mechanismus (v0.6)
+[1679s] ✅ LSTM Cell (v0.7)
+[1679s] ✅ Tokenizer (v0.8)
+
+📦 v0.9-v1.0: System & Integration
+[1679s] ✅ Task Scheduler (v0.9)
+[1679s] ✅ Config Manager (v1.0)
+
+📦 Utilities & Tools
+[1679s] ✅ Logger (v0.1)
+[1679s] ✅ Profiler (v0.5)
+[1679s] ✅ Data Validator (v0.1)
+
+============================================================
+🎉 Deep Research abgeschlossen!
+Gesammelt: 14 Code-Beispiele
+Endzeit: 19:05:19
