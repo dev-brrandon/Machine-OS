@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # OpenClaw mit ACP Unterstützung
+  openclaw:
+    image: ubuntu:22.04
+    container_name: openclaw-agents
+    privileged: true
+    cgroup: host
+    restart: unless-stopped
+    ports:
+      - "18800:18800"    # OpenClaw Gateway
+      - "18801:22"       # SSH für Zugriff
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+      - openclaw-data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: /sbin/init
+    environment:
+      - TZ=Europe/Berlin
+    networks:
+      - openclaw-network
+
+  # Qdrant Datenbank (optional, falls nicht schon läuft)
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: qdrant-db
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant-storage:/qdrant/storage
+    environment:
+      - QDRANT__SERVICE__API_KEY=qJ4icfeaDcrK7p4sX91sIb4gh7H61GFU
+    networks:
+      - openclaw-network
+
+volumes:
+  openclaw-data:
+  qdrant-storage:
+
+networks:
+  openclaw-network:
+    driver: bridge
