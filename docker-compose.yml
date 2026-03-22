@@ -1,9 +1,9 @@
-version: '3.8'
-
 services:
   # OpenClaw mit ACP Unterstützung
   openclaw:
-    image: ubuntu:22.04
+    build:
+      context: .
+      dockerfile: Dockerfile.openclaw
     container_name: openclaw-agents
     privileged: true
     cgroup: host
@@ -15,7 +15,6 @@ services:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
       - openclaw-data:/data
       - /var/run/docker.sock:/var/run/docker.sock
-    command: /sbin/init
     environment:
       - TZ=Europe/Berlin
     networks:
