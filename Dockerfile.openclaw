@@ -8,13 +8,18 @@ RUN apt-get update && apt-get install -y \
     git \
     python3 \
     python3-pip \
+    nodejs \
     npm \
     ssh \
     openssh-server \
     && rm -rf /var/lib/apt/lists/*
 
-# OpenClaw installieren
-RUN npm install -g openclaw
+# Node.js aktualisieren
+RUN npm install -g n && n stable
+
+# OpenClaw installieren (über npm oder curl)
+RUN npm install -g openclaw || \
+    (curl -fsSL https://install.openclaw.ai | bash)
 
 # SSH konfigurieren
 RUN echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
