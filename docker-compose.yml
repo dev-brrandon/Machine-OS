@@ -8,8 +8,7 @@ services:
     cgroup: host
     restart: unless-stopped
     ports:
-      - "32774:18800"    # OpenClaw Gateway
-      - "32776:22"       # SSH für Zugriff
+      - "32776:22"       # Nur SSH
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
       - openclaw-data:/data
@@ -17,45 +16,28 @@ services:
       - TZ=Europe/Berlin
     command: >
       bash -c "
-        # System-Tools installieren
         apt-get update && 
-        apt-get install -y systemd systemd-sysv curl git python3 npm ssh openssh-server &&
+        apt-get install -y systemd systemd-sysv ssh openssh-server curl &&
         
-        # SSH konfigurieren
+        # SSH-Key für Klaw hinzufügen
         mkdir -p /root/.ssh &&
         echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILGluwDpmjazbmStJgbLFqjB/pNejsNxkmfO2Rv8z3BR openclaw-agent' > /root/.ssh/authorized_keys &&
         chmod 700 /root/.ssh &&
         chmod 600 /root/.ssh/authorized_keys &&
         
-        # SSH-Server konfigurieren
+        # SSH konfigurieren
         echo 'PermitRootLogin prohibit-password' >> /etc/ssh/sshd_config &&
         echo 'PasswordAuthentication no' >> /etc/ssh/sshd_config &&
         service ssh start &&
         
-        # OpenClaw installieren
-        npm install -g openclaw &&
-        
-        # Systemd starten
+        # Systemd starten (hält Container am Leben)
         /sbin/init
       "
     networks:
       - openclaw-network
 
-  qdrant-agents:
-    image: qdrant/qdrant:latest
-    container_name: qdrant-agents
-    ports:
-      - "32775:6333"     # Qdrant für Sub-Agenten
-    volumes:
-      - qdrant-agents-storage:/qdrant/storage
-    environment:
-      - QDRANT__SERVICE__API_KEY=qJ4icfeaDcrK7p4sX91sIb4gh7H61GFU
-    networks:
-      - openclaw-network
-
 volumes:
   openclaw-data:
-  qdrant-agents-storage:
 
 networks:
   openclaw-network:
