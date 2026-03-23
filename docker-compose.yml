@@ -17,12 +17,25 @@ services:
       - TZ=Europe/Berlin
     command: >
       bash -c "
+        # System-Tools installieren
         apt-get update && 
         apt-get install -y systemd systemd-sysv curl git python3 npm ssh openssh-server &&
-        echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config &&
-        echo 'root:openclaw123' | chpasswd &&
+        
+        # SSH konfigurieren
+        mkdir -p /root/.ssh &&
+        echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILGluwDpmjazbmStJgbLFqjB/pNejsNxkmfO2Rv8z3BR openclaw-agent' > /root/.ssh/authorized_keys &&
+        chmod 700 /root/.ssh &&
+        chmod 600 /root/.ssh/authorized_keys &&
+        
+        # SSH-Server konfigurieren
+        echo 'PermitRootLogin prohibit-password' >> /etc/ssh/sshd_config &&
+        echo 'PasswordAuthentication no' >> /etc/ssh/sshd_config &&
         service ssh start &&
+        
+        # OpenClaw installieren
         npm install -g openclaw &&
+        
+        # Systemd starten
         /sbin/init
       "
     networks:
