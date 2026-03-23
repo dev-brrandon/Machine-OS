@@ -1,26 +1,32 @@
 services:
-  # OpenClaw mit ACP Unterstützung
   openclaw:
-    build:
-      context: .
-      dockerfile: Dockerfile.openclaw
+    image: ubuntu:22.04
     container_name: openclaw-agents
     privileged: true
     cgroup: host
     restart: unless-stopped
     ports:
-      - "18800:18800"    # OpenClaw Gateway
-      - "18801:22"       # SSH für Zugriff
+      - "18800:18800"
+      - "18801:22"
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
       - openclaw-data:/data
-      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - TZ=Europe/Berlin
+    # Erst systemd starten, dann OpenClaw installieren
+    entrypoint: |
+      bash -c "
+        apt-get update && 
+        apt-get install -y systemd systemd-sysv curl git python3 npm ssh openssh-server &&
+        echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config &&
+        echo 'root:openclaw123' | chpasswd &&
+        service ssh start &&
+        npm install -g openclaw || curl -fsSL https://install.openclaw.ai | bash
+        exec /sbin/init
+      "
     networks:
       - openclaw-network
 
-  # Qdrant Datenbank (optional, falls nicht schon läuft)
   qdrant:
     image: qdrant/qdrant:latest
     container_name: qdrant-db
