@@ -1,5 +1,7 @@
+version: '3.8'
+
 services:
-  openclaw:
+  openclaw-agents:
     image: ubuntu:22.04
     container_name: openclaw-agents
     privileged: true
@@ -13,16 +15,15 @@ services:
       - openclaw-data:/data
     environment:
       - TZ=Europe/Berlin
-    # Erst systemd starten, dann OpenClaw installieren
-    entrypoint: |
+    command: >
       bash -c "
         apt-get update && 
         apt-get install -y systemd systemd-sysv curl git python3 npm ssh openssh-server &&
         echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config &&
         echo 'root:openclaw123' | chpasswd &&
         service ssh start &&
-        npm install -g openclaw || curl -fsSL https://install.openclaw.ai | bash
-        exec /sbin/init
+        npm install -g openclaw &&
+        /sbin/init
       "
     networks:
       - openclaw-network
